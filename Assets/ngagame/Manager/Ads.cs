@@ -107,7 +107,7 @@ public class Ads : Singleton<Ads>
 			return;
 		}
 		SceneMaster.Instance.ShowLoading();
-		DOVirtual.DelayedCall(1.5f, () =>
+		DOVirtual.DelayedCall(2f, () =>
 		{
 
 #if GOOGLE_ADS_ENABLE

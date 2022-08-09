@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,13 +12,18 @@ public class Gameplay : MonoBehaviour
 
 	private void Awake()
 	{
-		ads_go.Instance.ShowAdIfAvailable((value)=>{});
 		Instance = this;
 		SceneMaster.Instance.OpenScene(SceneID.Main);
 		Init();
 	}
 
-	void Init()
+  private void Start()
+  {
+    
+    ads_go.Instance.ShowAdIfAvailable((value)=>{});
+  }
+
+  void Init()
 	{
 		var road = GetComponentInChildren<Road>();
 		if(road == null)
@@ -28,6 +34,8 @@ public class Gameplay : MonoBehaviour
 		
 		PlayerLoader = GetComponentInChildren<PlayerLoader>();
 		Gem.Earned = 0;
+    
+
 	}
 
 	private void OnDestroy()

@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "239c1e9f01027ece",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "239c1e9f01027ece",
+        "name": "com.KaremEldsoky.tallman",
+        "processId": 28509,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -107,24 +107,6 @@
         {
             "deviceId": "239c1e9f01027ece",
             "name": "com.KaremEldsoky.tallman",
-            "processId": 26103,
-            "exited": true
-        },
-        {
-            "deviceId": "239c1e9f01027ece",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 29357,
-            "exited": true
-        },
-        {
-            "deviceId": "239c1e9f01027ece",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 31029,
-            "exited": true
-        },
-        {
-            "deviceId": "239c1e9f01027ece",
-            "name": "com.KaremEldsoky.tallman",
             "processId": 32752,
             "exited": true
         },
@@ -133,6 +115,36 @@
             "name": "com.KaremEldsoky.tallman",
             "processId": 1853,
             "exited": true
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.android.launcher3",
+            "processId": 5165,
+            "exited": false
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 20725,
+            "exited": true
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 27557,
+            "exited": true
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 27930,
+            "exited": true
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 28509,
+            "exited": false
         }
     ],
     "m_Tags": {

@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   adUnitIdBanner: ca-app-pub-6243216273007084/4986934264
-  adUnitIdInter: ca-app-pub-3940256099942544/1033173712
-  adUnitIdReward: ca-app-pub-3940256099942544/5224354917
-  adUnitOpenApp: ca-app-pub-3940256099942544/3419835294
+  adUnitIdInter: ca-app-pub-6143123562350217/6681054617
+  adUnitIdReward: ca-app-pub-6143123562350217/3522207101
+  adUnitOpenApp: ca-app-pub-6143123562350217/4835288774
   showBanner: 0
   delayADS: 3
   redirectToScene: 
