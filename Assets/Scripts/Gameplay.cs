@@ -15,12 +15,13 @@ public class Gameplay : MonoBehaviour
 		Instance = this;
 		SceneMaster.Instance.OpenScene(SceneID.Main);
 		Init();
+    ads_go.Instance.ShowAdIfAvailable((value)=>{});
+
 	}
 
   private void Start()
   {
     
-    ads_go.Instance.ShowAdIfAvailable((value)=>{});
   }
 
   void Init()

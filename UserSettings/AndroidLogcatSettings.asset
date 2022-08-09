@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "239c1e9f01027ece",
         "name": "com.KaremEldsoky.tallman",
-        "processId": 28509,
+        "processId": 30026,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -144,6 +144,12 @@
             "deviceId": "239c1e9f01027ece",
             "name": "com.KaremEldsoky.tallman",
             "processId": 28509,
+            "exited": false
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 30026,
             "exited": false
         }
     ],
