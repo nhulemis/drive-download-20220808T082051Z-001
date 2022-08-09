@@ -1,0 +1,221 @@
+{
+    "m_SelectedDeviceId": "239c1e9f01027ece",
+    "m_SelectedPackage": {
+        "deviceId": "239c1e9f01027ece",
+        "name": "com.KaremEldsoky.tallman",
+        "processId": 1853,
+        "exited": false
+    },
+    "m_SelectedPriority": 0,
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.sec.android.app.launcher",
+            "processId": 3471,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 15159,
+            "exited": true
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 8422,
+            "exited": true
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 19852,
+            "exited": true
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 25646,
+            "exited": true
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 8285,
+            "exited": true
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 8929,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 10693,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 11821,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 13680,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 15356,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 16983,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 30547,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 1363,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 3820,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 6390,
+            "exited": false
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 17865,
+            "exited": true
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 18813,
+            "exited": true
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 20953,
+            "exited": true
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 21842,
+            "exited": true
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 22683,
+            "exited": true
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 26103,
+            "exited": false
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 29357,
+            "exited": false
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 31029,
+            "exited": false
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 32752,
+            "exited": false
+        },
+        {
+            "deviceId": "239c1e9f01027ece",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 1853,
+            "exited": false
+        }
+    ],
+    "m_Tags": {
+        "m_Entries": [
+            {
+                "m_Name": "Filter by all listed tags",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "No Filter",
+                "m_Selected": true
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Tag Control...",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Unity",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "CRASH",
+                "m_Selected": false
+            }
+        ]
+    },
+    "m_MemoryViewerState": {
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "MemoryGroup": 2,
+        "Behavior": 0
+    },
+    "m_Filter": "",
+    "m_FilterIsRegularExpression": false,
+    "m_SymbolPaths": []
+}

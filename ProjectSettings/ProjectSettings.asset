@@ -160,9 +160,9 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 5
+  AndroidBundleVersionCode: 6
   AndroidMinSdkVersion: 22
-  AndroidTargetSdkVersion: 0
+  AndroidTargetSdkVersion: 30
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -792,7 +792,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: gameanalytics_admob_enabled;USE_GA;GOOGLE_ADS_ENABLE
+    Android: USE_GA;GOOGLE_ADS_ENABLE;gameanalytics_admob_enabled
     Standalone: 
     iPhone: gameanalytics_admob_enabled
   additionalCompilerArguments: {}
