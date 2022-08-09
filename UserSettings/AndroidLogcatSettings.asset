@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "239c1e9f01027ece",
     "m_SelectedPackage": {
-        "deviceId": "239c1e9f01027ece",
-        "name": "com.KaremEldsoky.tallman",
-        "processId": 1853,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -107,62 +107,32 @@
         {
             "deviceId": "239c1e9f01027ece",
             "name": "com.KaremEldsoky.tallman",
-            "processId": 17865,
-            "exited": true
-        },
-        {
-            "deviceId": "239c1e9f01027ece",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 18813,
-            "exited": true
-        },
-        {
-            "deviceId": "239c1e9f01027ece",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 20953,
-            "exited": true
-        },
-        {
-            "deviceId": "239c1e9f01027ece",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 21842,
-            "exited": true
-        },
-        {
-            "deviceId": "239c1e9f01027ece",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 22683,
-            "exited": true
-        },
-        {
-            "deviceId": "239c1e9f01027ece",
-            "name": "com.KaremEldsoky.tallman",
             "processId": 26103,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "239c1e9f01027ece",
             "name": "com.KaremEldsoky.tallman",
             "processId": 29357,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "239c1e9f01027ece",
             "name": "com.KaremEldsoky.tallman",
             "processId": 31029,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "239c1e9f01027ece",
             "name": "com.KaremEldsoky.tallman",
             "processId": 32752,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "239c1e9f01027ece",
             "name": "com.KaremEldsoky.tallman",
             "processId": 1853,
-            "exited": false
+            "exited": true
         }
     ],
     "m_Tags": {

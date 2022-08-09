@@ -11,6 +11,7 @@ public class Gameplay : MonoBehaviour
 
 	private void Awake()
 	{
+    
 		Instance = this;
 		SceneMaster.Instance.OpenScene(SceneID.Main);
 		Init();

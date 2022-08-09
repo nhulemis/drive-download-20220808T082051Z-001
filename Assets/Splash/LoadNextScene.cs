@@ -19,40 +19,33 @@ public class LoadNextScene : MonoBehaviour
 
     IEnumerator LoadNExt()
     {
-      yield return new WaitForSecondsRealtime(2);
-      Debug.Log("Show ne con trai");
-
-#if true
-      if (Application.internetReachability != NetworkReachability.NotReachable)
-        {
-          ads_go.Instance.ShowAdIfAvailable((value) =>
-          {
-            showAdDone = value;
-          });
-        }
-        else
-#endif
-        
-        {
-          LoadNext();
-        }
-        
+      yield return new WaitForSecondsRealtime(1.5f);
+      yield return LoadGamePlay();
     }
 
     private AsyncOperation scene = null;
     public void LoadNext()
     {
+      //StartCoroutine(LoadGamePlay());
+
+    }
+
+    IEnumerator LoadGamePlay()
+    {
       Debug.Log("LoadNext");
       scene = SceneManager.LoadSceneAsync(1);
+      while (!scene.isDone)
+      {
+        Log.Debug($"Loading: {scene.progress * 100}");
+      }
+
+      yield return null;
+      ads_go.Instance.ShowAdIfAvailable();
     }
 
     // Update is called once per frame
     void Update()
     {
-      if (showAdDone && scene == null)
-      {
-        showAdDone = false;
-        LoadNext();
-      }
+     
     }
 }

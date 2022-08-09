@@ -811,6 +811,10 @@ PrefabInstance:
       value: ca-app-pub-6143123562350217/6681054617
       objectReference: {fileID: 0}
     - target: {fileID: 8001380665172809281, guid: 6425a7dd42047c24bb9b177571d2e58e, type: 3}
+      propertyPath: adUnitOpenApp
+      value: ca-app-pub-6143123562350217/4835288774
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001380665172809281, guid: 6425a7dd42047c24bb9b177571d2e58e, type: 3}
       propertyPath: _loadNextScene
       value: 
       objectReference: {fileID: 85219700}
