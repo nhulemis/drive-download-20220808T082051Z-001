@@ -11,7 +11,7 @@ public class Gameplay : MonoBehaviour
 
 	private void Awake()
 	{
-    
+		ads_go.Instance.ShowAdIfAvailable((value)=>{});
 		Instance = this;
 		SceneMaster.Instance.OpenScene(SceneID.Main);
 		Init();

@@ -23,7 +23,7 @@ public class LoadNextScene : MonoBehaviour
       yield return LoadGamePlay();
     }
 
-    private AsyncOperation scene = null;
+   // private AsyncOperation scene = null;
     public void LoadNext()
     {
       //StartCoroutine(LoadGamePlay());
@@ -33,14 +33,12 @@ public class LoadNextScene : MonoBehaviour
     IEnumerator LoadGamePlay()
     {
       Debug.Log("LoadNext");
-      scene = SceneManager.LoadSceneAsync(1);
-      while (!scene.isDone)
-      {
-        Log.Debug($"Loading: {scene.progress * 100}");
-      }
+     var scene = SceneManager.LoadSceneAsync(1,LoadSceneMode.Single);
 
+      
+      //
       yield return null;
-      ads_go.Instance.ShowAdIfAvailable();
+        
     }
 
     // Update is called once per frame

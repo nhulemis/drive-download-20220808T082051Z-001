@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Diagnostics.Contracts;
+using DG.Tweening;
 #if GOOGLE_ADS_ENABLE
 using GoogleMobileAds.Api;
 #endif
@@ -105,29 +106,32 @@ public class Ads : Singleton<Ads>
 			Debug.LogError("ngagame VIP");
 			return;
 		}
-		
-
+		SceneMaster.Instance.ShowLoading();
+		DOVirtual.DelayedCall(1.5f, () =>
+		{
 
 #if GOOGLE_ADS_ENABLE
-		if (this.interstitial.IsLoaded())
-		{
-			SceneMaster.Instance.ShowLoading(1);
-			if (ngagame.Utils.MobilePlatform)
+			if (this.interstitial.IsLoaded())
 			{
-				this.interstitial.Show();
+				SceneMaster.Instance.ShowLoading(1);
+				if (ngagame.Utils.MobilePlatform)
+				{
+					this.interstitial.Show();
+				}
 			}
-		}
-		else
-		{
-			if (Application.internetReachability != NetworkReachability.NotReachable)
-      {
-        isShowAfterRequest = show;
-				RequestInterstitial();
-				Analytics.Instance.LogEvent("attemp_request_interstitial");
-			}
+			else
+			{
+				if (Application.internetReachability != NetworkReachability.NotReachable)
+				{
+					isShowAfterRequest = show;
+					RequestInterstitial();
+					Analytics.Instance.LogEvent("attemp_request_interstitial");
+				}
 
-		}
+			}
 #endif
+		});
+
 	}
 #if GOOGLE_ADS_ENABLE
 	InterstitialAd interstitial;
@@ -182,8 +186,7 @@ public class Ads : Singleton<Ads>
 	public void HandleOnAdClosed(object sender, EventArgs args)
 	{
 		SceneMaster.Instance.HideLoading();
-    Debug.Log("Load next on done");
-
+		RequestInterstitial();
   }
 
 	public void OnAdFailedToShow(object sender, EventArgs args)
@@ -226,6 +229,7 @@ public class Ads : Singleton<Ads>
 		RewardCallback?.Invoke(true);
 		RewardCallback = null;
 		SceneMaster.Instance.HideLoading();
+		RequestRewardAd();
 	}
 
 	IEnumerator GetCountryCode(Action<string> onComplete)
