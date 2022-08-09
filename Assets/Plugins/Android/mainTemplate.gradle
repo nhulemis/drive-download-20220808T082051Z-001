@@ -3,12 +3,13 @@ apply plugin: 'com.android.library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-**DEPS**}
+**DEPS**
+    implementation 'androidx.multidex:multidex:2.0.1'}
 
 android {
     compileSdkVersion **APIVERSION**
     buildToolsVersion '**BUILDTOOLS**'
-
+    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -17,6 +18,8 @@ android {
     defaultConfig {
         minSdkVersion **MINSDKVERSION**
         targetSdkVersion **TARGETSDKVERSION**
+        
+        multiDexEnabled true
         ndk {
             abiFilters **ABIFILTERS**
         }
