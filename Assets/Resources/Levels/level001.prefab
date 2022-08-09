@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1441569969982518079}
   - {fileID: 5755809918425097268}
@@ -83,6 +84,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -155,6 +157,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5204284259637215336}
   - {fileID: 5204284258972080492}
@@ -423,10 +426,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462218110060653944, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: calculation
-      value: +75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6081678910142197023, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
-      propertyPath: m_Text
       value: +75
       objectReference: {fileID: 0}
     m_RemovedComponents: []

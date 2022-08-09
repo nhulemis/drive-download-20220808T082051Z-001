@@ -14,7 +14,7 @@ public class Ads : Singleton<Ads>
 	public static bool Showing = false;
 
 	UnityAction<bool> RewardCallback;
-	[SerializeField]AdsSetting adsSetting;
+	//[SerializeField]AdsSetting adsSetting;
 	public bool initialized = false;
 	const string AD_NETWORK_NAME = "AdMob Mediation";
 	readonly List<string> TEST_AD_COUNTRY_LIST = new List<string> { "" }; // List of country will use test ads
@@ -41,16 +41,7 @@ public class Ads : Singleton<Ads>
 	{
 		//adsSetting = Resources.Load<AdsSetting>("Adsseting");
     Debug.Log("Init Ads 1");
-    if (adsSetting != null)
-    {
-      Debug.Log("Oke");
-    }
-		if (adsSetting == null || (!string.IsNullOrEmpty(UserCountryCode) && TEST_AD_COUNTRY_LIST.Contains(UserCountryCode)))
-		{
-			// Use test app id
-			Analytics.Instance.LogEvent($"use_test_ads_{UserCountryCode}");
-			adsSetting = new AdsSetting();
-		}
+    
 #if GOOGLE_ADS_ENABLE
 		// Initialize the Mobile Ads SDK.
 		MobileAds.Initialize((initStatus) =>
@@ -58,12 +49,7 @@ public class Ads : Singleton<Ads>
       Debug.Log("Init ads Done");
 			RequestInterstitial();
 			RequestRewardAd();
-			if (adsSetting.debug)
-			{
-				RequestConfiguration requestConfiguration = new RequestConfiguration.Builder().SetTestDeviceIds(adsSetting.testDeviceIds).build();
-				MobileAds.SetRequestConfiguration(requestConfiguration);
-				Debug.Log("dungnv: google mediation test");
-			}
+			
 
 			Dictionary<string, AdapterStatus> map = initStatus.getAdapterStatusMap();
 			foreach (KeyValuePair<string, AdapterStatus> keyValuePair in map)
@@ -150,7 +136,7 @@ public class Ads : Singleton<Ads>
 	private void RequestInterstitial()
 	{
 #if UNITY_ANDROID
-		string adUnitId = adsSetting.googleInterstitialUnitIdAndroid;
+    string adUnitId = ads_go.Instance.adUnitIdInter; 
 #elif UNITY_IPHONE
         string adUnitId = adsSetting.googleInterstitialUnitIdIphone;
 #else
@@ -180,7 +166,6 @@ public class Ads : Singleton<Ads>
     SceneMaster.Instance.HideLoading();
     Debug.Log("Load next on Fail Load");
 
-    FindObjectOfType<LoadNextScene>()?.LoadNext();
   }
 
   private void OnAdInterLoaded(object sender, EventArgs e)
@@ -199,9 +184,7 @@ public class Ads : Singleton<Ads>
 		SceneMaster.Instance.HideLoading();
     Debug.Log("Load next on done");
 
-    FindObjectOfType<LoadNextScene>()?.LoadNext();
-
-	}
+  }
 
 	public void OnAdFailedToShow(object sender, EventArgs args)
 	{
@@ -218,7 +201,7 @@ public class Ads : Singleton<Ads>
 	{
 		string adUnitId;
 #if UNITY_ANDROID
-		adUnitId = adsSetting.googleRewardUnitIdAndroid;
+		adUnitId = ads_go.Instance.adUnitIdReward;
 #elif UNITY_IPHONE
             adUnitId = adsSetting.googleRewardUnitIdIphone;
 #else

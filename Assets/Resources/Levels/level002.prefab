@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5274704595524991899}
   - {fileID: 8430567580576070796}
@@ -86,6 +87,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -158,6 +160,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5211891997831090313}
   - {fileID: 5211891998487284109}
@@ -918,14 +921,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TallWeight (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 4462218110060653944, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
-      propertyPath: calculation
-      value: +100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6081678910142197023, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
-      propertyPath: m_Text
-      value: +100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
 --- !u!4 &5077368700361445580 stripped
@@ -1228,10 +1223,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5211891997831090313}
     m_Modifications:
-    - target: {fileID: 1199829359603233200, guid: 5a2c6b420452c274aa38499c353e0815, type: 3}
-      propertyPath: calculation
-      value: +25
-      objectReference: {fileID: 0}
     - target: {fileID: 2365159769475882913, guid: 5a2c6b420452c274aa38499c353e0815, type: 3}
       propertyPath: m_Name
       value: WeightGate
@@ -1279,18 +1270,6 @@ PrefabInstance:
     - target: {fileID: 2365159769475882918, guid: 5a2c6b420452c274aa38499c353e0815, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5665509963471377525, guid: 5a2c6b420452c274aa38499c353e0815, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5771138799943940289, guid: 5a2c6b420452c274aa38499c353e0815, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6896821717431852760, guid: 5a2c6b420452c274aa38499c353e0815, type: 3}
-      propertyPath: m_Text
-      value: +25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a2c6b420452c274aa38499c353e0815, type: 3}

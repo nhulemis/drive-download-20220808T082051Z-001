@@ -120,19 +120,23 @@ public class ResultScene : Scene
 			{
 				return;
 			}
-			xGemButton.interactable = false;
-			gemButton.interactable = false;
-			var earnedGem = Gem.Earned * X_GEM;
-			collectAnimation.Collect(
-			delegate
-			{
-				Profile.Instance.Coins += earnedGem;
-				Close();
-			},
-			(percent) =>
-			{
-				globalGemText.text = Mathf.CeilToInt(Mathf.Lerp(Profile.Instance.Coins, Profile.Instance.Coins + earnedGem, percent)).ToString();
-			});
+			
+			Runner.Instance.AddEventCallBack(() =>
+      {
+        xGemButton.interactable = false;
+        gemButton.interactable = false;
+        var earnedGem = Gem.Earned * X_GEM;
+        collectAnimation.Collect(
+          delegate
+          {
+            Profile.Instance.Coins += earnedGem;
+            Close();
+          },
+          (percent) =>
+          {
+            globalGemText.text = Mathf.CeilToInt(Mathf.Lerp(Profile.Instance.Coins, Profile.Instance.Coins + earnedGem, percent)).ToString();
+          });
+      });
 		});
 	}
 
@@ -144,8 +148,11 @@ public class ResultScene : Scene
 			{
 				return;
 			}
-			Profile.Instance.Level++;
-			Close();
+			Runner.Instance.AddEventCallBack(() =>
+      {
+        Profile.Instance.Level++;
+        Close();
+      });
 		});
 	}
 

@@ -44,8 +44,11 @@ public class RewardSkin : Scene
 		{
 			if(value)
 			{
-				ShopManager.Instance.Unlock(skinInProgress.ToString(), true);
-				Close();
+				Runner.Instance.AddEventCallBack(() =>
+        {
+          ShopManager.Instance.Unlock(skinInProgress.ToString(), true);
+          Close();
+        });
 			}
 		});
 	}

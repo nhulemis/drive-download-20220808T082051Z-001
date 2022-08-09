@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using GoogleMobileAds.Api;
 using GoogleMobileAds.Common;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class LoadNextScene : MonoBehaviour
 {
-    // Start is called before the first frame update
+  private bool showAdDone = false;
+  // Start is called before the first frame update
     void Start()
     {
+      ads_go.Instance.LoadAd();
       StartCoroutine(LoadNExt());
     }
 
@@ -22,7 +25,10 @@ public class LoadNextScene : MonoBehaviour
 #if true
       if (Application.internetReachability != NetworkReachability.NotReachable)
         {
-          ads_go.Instance.ShowInterstitial();
+          ads_go.Instance.ShowAdIfAvailable((value) =>
+          {
+            showAdDone = value;
+          });
         }
         else
 #endif
@@ -33,15 +39,20 @@ public class LoadNextScene : MonoBehaviour
         
     }
 
+    private AsyncOperation scene = null;
     public void LoadNext()
     {
       Debug.Log("LoadNext");
-      SceneManager.LoadScene(1);
+      scene = SceneManager.LoadSceneAsync(1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+      if (showAdDone && scene == null)
+      {
+        showAdDone = false;
+        LoadNext();
+      }
     }
 }

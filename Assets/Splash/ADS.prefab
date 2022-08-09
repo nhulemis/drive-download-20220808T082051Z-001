@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269c72ebfbdb4394e8c90f23e123ac2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appId: ca-app-pub-6243216273007084~7980763260
   adUnitIdBanner: ca-app-pub-6243216273007084/4986934264
-  adUnitIdInter: ca-app-pub-6243216273007084/6062829328
-  adUnitIdReward: ca-app-pub-6243216273007084/2272855607
-  showBanner: 1
+  adUnitIdInter: ca-app-pub-3940256099942544/1033173712
+  adUnitIdReward: ca-app-pub-3940256099942544/5224354917
+  adUnitOpenApp: ca-app-pub-3940256099942544/3419835294
+  showBanner: 0
   delayADS: 3
   redirectToScene: 
+  _loadNextScene: {fileID: 0}
