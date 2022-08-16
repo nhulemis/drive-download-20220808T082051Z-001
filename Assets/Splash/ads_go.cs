@@ -152,80 +152,111 @@ private UnityAction<bool> startAppCallBack;
 
   void Start () {
 
-		// Debug.Log("alo");
-		// checkOtherADS();
-		//
-		// DontDestroyOnLoad(this.gameObject);
-		//
-		// List<string> deviceIds = new List<string>();
-		// deviceIds.Add("BC82D570192ECB14959E0F901038C49A");
-		// RequestConfiguration requestConfiguration = new RequestConfiguration
-		// 		.Builder()
-		// 	.SetTestDeviceIds(deviceIds)
-		// 	.build();
-		// MobileAds.SetRequestConfiguration(requestConfiguration);
-		//
-		// MobileAds.Initialize(init =>
-		// {
-		// 	Debug.Log("Init ads Done");
-		// });
-		//
-		//
-		// this.rewardedAd = new RewardedAd(adUnitIdReward);
-		//
-		// // Called when an ad request has successfully loaded.
-		// this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
-		// // Called when an ad request failed to load.
-		// this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
-		// // Called when an ad is shown.
-		// this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
-		// // Called when an ad request failed to show.
-		// this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
-		// // Called when the user should be rewarded for interacting with the ad.
-		// this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
-		// // Called when the ad is closed.
-		// this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-		//
-		//
-		//
-		// RequestInterstitial();
-		// RequestRewardBasedVideo();
-	}
-
-	private void HandleRewardedAdClosed(object sender, EventArgs e)
-	{
-		Debug.Log("HandleRewardedAdClosed");
-    RewardCallback?.Invoke(true);
-    RewardCallback = null;
-    SceneMaster.Instance.HideLoading();
+		Debug.Log("alo");
+		checkOtherADS();
+		
+		DontDestroyOnLoad(this.gameObject);
+		
+		List<string> deviceIds = new List<string>();
+		deviceIds.Add("BC82D570192ECB14959E0F901038C49A");
+		RequestConfiguration requestConfiguration = new RequestConfiguration
+				.Builder()
+			.SetTestDeviceIds(deviceIds)
+			.build();
+		MobileAds.SetRequestConfiguration(requestConfiguration);
+		
+		MobileAds.Initialize(init =>
+		{
+			Debug.Log("Init ads Done");
+		});
+		
+		
+		this.rewardedAd = new RewardedAd(adUnitIdReward);
+		
+		// Called when an ad request has successfully loaded.
+		this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
+		// Called when an ad request failed to load.
+		this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
+		// Called when an ad is shown.
+		this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
+		// Called when an ad request failed to show.
+		this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
+		// Called when the user should be rewarded for interacting with the ad.
+		this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+		// Called when the ad is closed.
+		this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+		
+		
+		
+		RequestInterstitial();
 		RequestRewardBasedVideo();
 	}
 
-	private void HandleUserEarnedReward(object sender, Reward e)
-	{
-		Debug.Log("HandleUserEarnedReward");
-	}
+  #region VideoReward
 
-	private void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs e)
-	{
-		Debug.Log("HandleRewardedAdFailedToShow");
-	}
+  private void HandleRewardedAdClosed(object sender, EventArgs e)
+  {
+      Debug.Log("HandleRewardedAdClosed");
+      RewardCallback?.Invoke(true);
+      RewardCallback = null;
+      SceneMaster.Instance.HideLoading();
+      RequestRewardBasedVideo();
+      
+  }
 
-	private void HandleRewardedAdOpening(object sender, EventArgs e)
-	{
-		Debug.Log("HandleRewardedAdOpening");
-	}
+  private void HandleUserEarnedReward(object sender, Reward e)
+  {
+      Debug.Log("HandleUserEarnedReward");
+      rewardCallback?.Invoke(true);
 
-	private void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
-	{
-		Debug.Log("HandleRewardedAdFailedToLoad");
-	}
+  }
 
-	private void HandleRewardedAdLoaded(object sender, EventArgs e)
-	{
-		Debug.Log("HandleRewardedAdLoaded");
-	}
+  private void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs e)
+  {
+      Debug.Log("HandleRewardedAdFailedToShow");
+      rewardCallback?.Invoke(false);
 
+  }
+
+  private void HandleRewardedAdOpening(object sender, EventArgs e)
+  {
+      Debug.Log("HandleRewardedAdOpening");
+  }
+
+  private void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
+  {
+      Debug.Log("HandleRewardedAdFailedToLoad");
+  }
+
+  private void HandleRewardedAdLoaded(object sender, EventArgs e)
+  {
+      Debug.Log("HandleRewardedAdLoaded");
+  }
+
+  private UnityAction<bool> rewardCallback;
+
+  public void ShowRewarded( UnityAction<bool> callback)
+  {
+      rewardCallback = callback;
+      if (rewardedAd.IsLoaded ()) {
+          rewardedAd.Show ();
+      }
+      else
+      {
+          RequestInterstitial();
+      }
+  }
+  
+  private void RequestRewardBasedVideo()
+  {
+      this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+      // Create an empty ad request.
+      AdRequest request = new AdRequest.Builder().Build();
+      // Load the rewarded ad with the request.
+      this.rewardedAd.LoadAd(request);
+  }
+
+  #endregion
 
 	void Update()
 	{
@@ -245,74 +276,13 @@ private UnityAction<bool> startAppCallBack;
 
 	}
 
-	public void ShowRandom()
-	{
-		var r = Random.Range(0, 100);
-		if (r % 2== 0)
-		{
-			ShowInterstitial();
-		}
 
-		else
-		{
-			ShowRewarded();
-		}
-	}
-
-	public void ShowInterstitial()
-	{
-		if (PlayerPrefs.GetInt("noads") != 1)
-		{
-			if (this.interstitial.IsLoaded())
-			{
-        Debug.Log("Show");
-        //SceneMaster.Instance.ShowLoading(1);
-				gameTimer = 0;
-				this.interstitial.Show();
-				RequestInterstitial();
-			}
-		}
-
-
-	}
-  
   
   public float InterstitialTime { get; set; } = 0;
   public int InterstitialIntervalTime { get; set; } = 35;	
   UnityAction<bool> RewardCallback;
 
   
-  public void ShowRewardedAd(UnityEngine.Events.UnityAction<bool> callback, string placementName = "")
-  {
-    if(!ngagame.Utils.MobilePlatform)
-    {
-      callback?.Invoke(true);
-      return;
-    }
-#if GOOGLE_ADS_ENABLE
-    if (this.rewardedAd.IsLoaded())
-    {
-      this.rewardedAd.Show();
-      RewardCallback = callback;
-      InterstitialTime = Time.realtimeSinceStartup;
-    }
-    else
-    {
-      RequestRewardBasedVideo();
-      callback?.Invoke(false);
-      Analytics.Instance.LogEvent("attemp_request_reward");
-      ngagame.Utils.Toast("No AD available");
-    }
-#endif
-  }
-
-	public void ShowRewarded()
-	{
-
-		if (rewardedAd.IsLoaded ()) {
-			rewardedAd.Show ();
-		}
-	}
 
 	public void ShowBanner()
 	{
@@ -342,68 +312,87 @@ private UnityAction<bool> startAppCallBack;
 		bannerView.Hide();
 
 	}
-	private void RequestInterstitial()
-	{
-		
-		// Initialize an InterstitialAd.
-		this.interstitial = new InterstitialAd(adUnitIdInter);
 
-		// Called when an ad request has successfully loaded.
-		this.interstitial.OnAdLoaded += HandleOnAdLoaded;
-		// Called when an ad request failed to load.
-		this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
-		// Called when an ad is shown.
-		this.interstitial.OnAdOpening += HandleOnAdOpening;
-		// Called when the ad is closed.
-		this.interstitial.OnAdClosed += HandleOnAdClosed;
-    
-		// Create an empty ad request.
-		AdRequest request = new AdRequest.Builder().Build();
-		// Load the interstitial with the request.
-		this.interstitial.LoadAd(request);
+  #region Inter
 
-	}
-	
-	private void HandleOnAdLoaded(object sender, EventArgs args)
-	{
-		MonoBehaviour.print("HandleAdLoaded event received");
-	}
-
-	private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
-	{
-		MonoBehaviour.print("HandleFailedToReceiveAd event received with message: "
-		                    + args);
-		if (showBanner == true)
-		{
-			if (PlayerPrefs.GetInt("noads") != 1)
-			{
-				this.RequestBanner();
-				bannerView.Show();
-			}
-		}
-    _loadNextScene?.SendMessage("LoadNext");
-
-	}
-
-	private void HandleOnAdOpening(object sender, EventArgs args)
-	{
-		MonoBehaviour.print("HandleAdOpening event received");
-	}
-
-	private void HandleOnAdClosed(object sender, EventArgs args)
-	{
-		MonoBehaviour.print("HandleAdClosed event received");
-    _loadNextScene?.SendMessage("LoadNext");
-	}
-	
-	private void RequestRewardBasedVideo()
+  private UnityAction<bool> interActionCallBack;
+  public void ShowInterstitial( UnityAction<bool> actionCallback = null)
   {
-    this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-		// Create an empty ad request.
-		AdRequest request = new AdRequest.Builder().Build();
-		// Load the rewarded ad with the request.
-		this.rewardedAd.LoadAd(request);
-	}
+      interActionCallBack = actionCallback;
+      if (PlayerPrefs.GetInt("noads") != 1)
+      {
+          if (this.interstitial.IsLoaded())
+          {
+              Debug.Log("Show");
+              //SceneMaster.Instance.ShowLoading(1);
+              gameTimer = 0;
+              this.interstitial.Show();
+              RequestInterstitial();
+          }
+      }
+
+
+  }
+
+  private void RequestInterstitial()
+  {
+		
+      // Initialize an InterstitialAd.
+      this.interstitial = new InterstitialAd(adUnitIdInter);
+
+      // Called when an ad request has successfully loaded.
+      this.interstitial.OnAdLoaded += HandleOnAdLoaded;
+      // Called when an ad request failed to load.
+      this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+      // Called when an ad is shown.
+      this.interstitial.OnAdOpening += HandleOnAdOpening;
+      // Called when the ad is closed.
+      this.interstitial.OnAdClosed += HandleOnAdClosed;
+    
+      // Create an empty ad request.
+      AdRequest request = new AdRequest.Builder().Build();
+      // Load the interstitial with the request.
+      this.interstitial.LoadAd(request);
+
+  }
+	
+  private void HandleOnAdLoaded(object sender, EventArgs args)
+  {
+      MonoBehaviour.print("HandleAdLoaded event received");
+  }
+
+  private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+  {
+      MonoBehaviour.print("HandleFailedToReceiveAd event received with message: "
+                          + args);
+      if (showBanner == true)
+      {
+          if (PlayerPrefs.GetInt("noads") != 1)
+          {
+              this.RequestBanner();
+              bannerView.Show();
+          }
+      }
+      _loadNextScene?.SendMessage("LoadNext");
+      interActionCallBack?.Invoke(false);
+
+  }
+
+  private void HandleOnAdOpening(object sender, EventArgs args)
+  {
+      MonoBehaviour.print("HandleAdOpening event received");
+  }
+
+  private void HandleOnAdClosed(object sender, EventArgs args)
+  {
+      MonoBehaviour.print("HandleAdClosed event received");
+      interActionCallBack?.Invoke(true);
+      _loadNextScene?.SendMessage("LoadNext");
+  }
+  
+
+  #endregion
+	
 
 
 }

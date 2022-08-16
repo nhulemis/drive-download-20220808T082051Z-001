@@ -806,6 +806,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ADS
       objectReference: {fileID: 0}
+    - target: {fileID: 8001380665172809281, guid: 6425a7dd42047c24bb9b177571d2e58e, type: 3}
+      propertyPath: adUnitIdBanner
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8001380665172809282, guid: 6425a7dd42047c24bb9b177571d2e58e, type: 3}
       propertyPath: m_RootOrder
       value: 4

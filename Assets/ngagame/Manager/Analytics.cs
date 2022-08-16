@@ -58,7 +58,7 @@ public class Analytics : Singleton<Analytics>
 	{
 		try
 		{
-			int InterstitialIntervalTime = Ads.Instance.InterstitialIntervalTime;
+			int InterstitialIntervalTime = ads_go.Instance.InterstitialIntervalTime;
 			bool useTimer = true;
 			int levelVariant = 0;
 #if USE_GA
@@ -67,7 +67,7 @@ public class Analytics : Singleton<Analytics>
 			GameAnalytics.SetCustomDimension01(levelVariant > 0 ? "B" : "A");
 			Debug.Log("dungnv level_ab: " + levelVariant);
 #endif
-			Ads.Instance.InterstitialIntervalTime = InterstitialIntervalTime;
+			ads_go.Instance.InterstitialIntervalTime = InterstitialIntervalTime;
 		} catch { }
 	}
 

@@ -1,107 +1,65 @@
 {
-    "m_SelectedDeviceId": "239c1e9f01027ece",
+    "m_SelectedDeviceId": "98899a344444435159",
     "m_SelectedPackage": {
-        "deviceId": "239c1e9f01027ece",
+        "deviceId": "98899a344444435159",
         "name": "com.KaremEldsoky.tallman",
-        "processId": 30026,
+        "processId": 11023,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "98899a344444435159",
-            "name": "com.sec.android.app.launcher",
-            "processId": 3471,
-            "exited": false
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 15159,
-            "exited": true
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 8422,
-            "exited": true
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 19852,
-            "exited": true
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 25646,
-            "exited": true
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 8285,
-            "exited": true
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 8929,
-            "exited": false
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 10693,
-            "exited": false
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 11821,
-            "exited": false
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 13680,
-            "exited": false
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 15356,
-            "exited": false
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 16983,
-            "exited": false
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 30547,
-            "exited": false
-        },
-        {
-            "deviceId": "98899a344444435159",
-            "name": "com.KaremEldsoky.tallman",
-            "processId": 1363,
-            "exited": false
-        },
-        {
-            "deviceId": "98899a344444435159",
             "name": "com.KaremEldsoky.tallman",
             "processId": 3820,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "98899a344444435159",
             "name": "com.KaremEldsoky.tallman",
             "processId": 6390,
+            "exited": true
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 24529,
+            "exited": true
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.sec.android.app.launcher",
+            "processId": 3387,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 26304,
+            "exited": true
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 28816,
+            "exited": true
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.android.vending",
+            "processId": 5295,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.NLStudioEGame.HamerThunderHero",
+            "processId": 6647,
+            "exited": false
+        },
+        {
+            "deviceId": "98899a344444435159",
+            "name": "com.KaremEldsoky.tallman",
+            "processId": 11023,
             "exited": false
         },
         {

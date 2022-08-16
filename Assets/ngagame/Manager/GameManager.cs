@@ -16,8 +16,7 @@ public class GameManager: MonoBehaviour
 
 	public void Init()
 	{
-		Analytics.Instance.Init();
-		Ads.Instance.Init();
+		//Analytics.Instance.Init();
 		//SceneMaster.Instance.ShowBannerShield();
 		Initialized = true;
 	}

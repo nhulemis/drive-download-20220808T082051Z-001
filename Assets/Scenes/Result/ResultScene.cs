@@ -96,7 +96,7 @@ public class ResultScene : Scene
 
 		DOVirtual.DelayedCall(0.5f, delegate
 		{
-			Ads.Instance.ShowInterstitial();
+			ads_go.Instance.ShowInterstitial();
 			Profile.Instance.Coins += Gem.Earned;
 			Close();
 		});
@@ -106,7 +106,7 @@ public class ResultScene : Scene
 	{
 		gemButton.interactable = false;
 		xGemButton.interactable = false;
-		Ads.Instance.ShowInterstitial();
+		ads_go.Instance.ShowInterstitial();
 		Profile.Instance.Coins += Gem.Earned;
 		SceneMaster.Instance.ReloadScene(SceneID.Gameplay);
 		SceneMaster.Instance.CloseScene(SceneID.Result);
@@ -114,7 +114,7 @@ public class ResultScene : Scene
 
 	public void OnXGemClicked()
 	{
-		Ads.Instance.ShowRewardedAd((value) =>
+		ads_go.Instance.ShowRewarded((value) =>
 		{
 			if(!value)
 			{
@@ -142,7 +142,7 @@ public class ResultScene : Scene
 
 	public void OnSkipLevelClicked()
 	{
-		Ads.Instance.ShowRewardedAd((value) =>
+		ads_go.Instance.ShowRewarded((value) =>
 		{
 			if (!value)
 			{

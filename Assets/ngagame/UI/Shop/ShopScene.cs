@@ -118,13 +118,13 @@ public class ShopScene : Scene
 
 	public void GetCoin()
 	{
-		Ads.Instance.ShowRewardedAd((value) =>
+		ads_go.Instance.ShowRewarded((value) =>
 		{
 			if(value)
 			{
 				Profile.Instance.Coins += rewardCoinAmount;
 			}
-		}, "coin_in_shop");
+		});
 	}
 
 	public void Close()
