@@ -792,7 +792,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: USE_GA;GOOGLE_ADS_ENABLE;gameanalytics_admob_enabled
+    Android: GOOGLE_ADS_ENABLE;gameanalytics_admob_enabled
     Standalone: 
     iPhone: gameanalytics_admob_enabled
   additionalCompilerArguments: {}

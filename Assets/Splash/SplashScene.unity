@@ -807,8 +807,20 @@ PrefabInstance:
       value: ADS
       objectReference: {fileID: 0}
     - target: {fileID: 8001380665172809281, guid: 6425a7dd42047c24bb9b177571d2e58e, type: 3}
+      propertyPath: adUnitIdInter
+      value: ca-app-pub-3940256099942544/1033173712
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001380665172809281, guid: 6425a7dd42047c24bb9b177571d2e58e, type: 3}
+      propertyPath: adUnitOpenApp
+      value: ca-app-pub-3940256099942544/3419835294
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001380665172809281, guid: 6425a7dd42047c24bb9b177571d2e58e, type: 3}
       propertyPath: adUnitIdBanner
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001380665172809281, guid: 6425a7dd42047c24bb9b177571d2e58e, type: 3}
+      propertyPath: adUnitIdReward
+      value: ca-app-pub-3940256099942544/5224354917
       objectReference: {fileID: 0}
     - target: {fileID: 8001380665172809282, guid: 6425a7dd42047c24bb9b177571d2e58e, type: 3}
       propertyPath: m_RootOrder
