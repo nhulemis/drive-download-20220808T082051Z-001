@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,8 +28,9 @@ public class GlobalCoin : MonoBehaviour
 	}
 
 	void OnCoinChange(GameEvent Event_Type, Component Sender, object Param = null)
-	{
-		coinText.text = Profile.Instance.Coins.ToString();
+  {
+      int old = Int32.Parse(coinText.text.Replace(",","").Replace(".",""));
+		coinText.DOCounter( old,Profile.Instance.Coins, 2);
 	}
 
 	int previewNumber;

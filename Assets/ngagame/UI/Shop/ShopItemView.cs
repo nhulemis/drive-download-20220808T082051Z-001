@@ -59,17 +59,13 @@ public class ShopItemView : MonoBehaviour
 
 	public void OnClick()
 	{
-		if(IsOwned())
+		if(IsOwned()  && lockedObject.activeSelf == false)
 		{
 			ShopManager.Instance.CurrentSkin = Id;
 			ShopManager.Instance.CurrentSkin = Id;
 			OnSelect?.Invoke(Id);
-		} else
-		{
-			ShopManager.Instance.Unlock(Id, true);
-			OnSelect?.Invoke(Id);
-			Refresh();
-		}
+		} 
+    
 	}
 
 	public void Refresh()

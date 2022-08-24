@@ -1,398 +1,188 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using GoogleMobileAds.Api;
-using UnityEditor;
-using UnityEngine.Events;
-using Random = UnityEngine.Random;
 
-public class ads_go : Singleton<ads_go> {
-	private BannerView bannerView;
-	private InterstitialAd interstitial;
-	private RewardedAd rewardedAd;
-	private GameObject Rew;
+public class ads_go : MonoBehaviour
+{
+    public static ads_go Instance;
 
-	[Space]
-	[Header("ADMOB ID:")]
-	[Space]
-	[Header("   *******************************************")]
-	[Header("      Assets -> Google Mobile Ads -> Settings...")]
-	[Header("   Do not forget to change the ADMOB APP ID in menu:")]
-	[Header("   *******************************************")]
+    [ReadOnly]
+    public string maxSDKKey = "DpnBL7fWuMl3Nosbg-cTaQH2dulNafTa_pg7xL4tz7z6DnC1RgfhWQFATzZ-AOqRfTEqvNemGvfH_SoiTHQaal";
+    [Space] private int coutLoseGame = 0;
 
-		//public string appId;
+    public int timesLoseGameToShowInterAds = 5;
+    public string maxAdInterId = "77fecb0549079116";
+    public string maxAdInterIOS = "91dbea6644760da9";
 
-		public string adUnitIdBanner;
-		public string adUnitIdInter;
-		public string adUnitIdReward;
-    [Space] public string adUnitOpenApp;
+    [Space] public bool isShowBanner;
 
-#region AdOpenApp
+    public float threshold = 3;
+    public string maxAdBannerId = "6630b4634b55e6a7";
+    public string maxAdBannerIOS = "0a692aa5cb5aa5df";
 
-private UnityAction<bool> startAppCallBack;
-    private AppOpenAd ad;
+    [Space] public string maxAdRewardId = "b5ca2de9cc42441b";
+    public string maxAdRewardIOS = "17dfb961a8d14eec";
 
-    private bool isShowingAd = false;
-
-    private bool IsAdAvailable
+    void checkOtherADS()
     {
-      get
-      {
-        return ad != null;
-      }
     }
 
-    public void LoadAd()
+    private void Awake()
     {
-      AdRequest request = new AdRequest.Builder().Build();
-
-      // Load an app open ad for portrait orientation
-      AppOpenAd.LoadAd(adUnitOpenApp, ScreenOrientation.Portrait, request, ((appOpenAd, error) =>
-      {
-        if (error != null)
+        if (Instance != null)
         {
-          // Handle the error.
-          Debug.LogFormat("Failed to load the ad. (reason: {0})", error.LoadAdError.GetMessage());
-          return;
+            Destroy(gameObject);
         }
 
-        // App open ad is loaded.
-        ad = appOpenAd;
-      }));
+        Instance = this;
+        DontDestroyOnLoad(this);
     }
-    
-    public void ShowAdIfAvailable(UnityAction<bool> callback = null)
+
+    void Start()
     {
-      if (!IsAdAvailable || isShowingAd)
-      {
-        Log.Debug("not available");
-        callback?.Invoke(true);
-        return;
-      }
+        MaxSdk.SetSdkKey(maxSDKKey);
+        MaxSdk.InitializeSdk();
 
-      startAppCallBack = callback;
-      ad.OnAdDidDismissFullScreenContent += HandleAdDidDismissFullScreenContent;
-      ad.OnAdFailedToPresentFullScreenContent += HandleAdFailedToPresentFullScreenContent;
-      ad.OnAdDidPresentFullScreenContent += HandleAdDidPresentFullScreenContent;
-      ad.OnAdDidRecordImpression += HandleAdDidRecordImpression;
-      ad.OnPaidEvent += HandlePaidEvent;
+        StartCoroutine(AutoShowBanner());
 
-      ad.Show();
+        MaxSdkCallbacks.Rewarded.OnAdReceivedRewardEvent += OnRewardAdReceived;
+        MaxSdkCallbacks.OnSdkInitializedEvent += OnAdInitSuccess;
     }
 
-    private void HandleAdDidDismissFullScreenContent(object sender, EventArgs args)
+    private void OnAdInitSuccess(MaxSdkBase.SdkConfiguration obj)
     {
-      Debug.Log("Closed app open ad");
-      // Set the ad to null to indicate that AppOpenAdManager no longer has another ad to show.
-      ad = null;
-      isShowingAd = false;
-      LoadAd();
-      startAppCallBack?.Invoke(true);
+        IsVideoRewardReady();
     }
 
-    private void HandleAdFailedToPresentFullScreenContent(object sender, AdErrorEventArgs args)
+    private void OnDestroy()
     {
-      Debug.LogFormat("Failed to present the ad (reason: {0})", args.AdError.GetMessage());
-      // Set the ad to null to indicate that AppOpenAdManager no longer has another ad to show.
-      ad = null;
-      LoadAd();
-      startAppCallBack?.Invoke(true);
-
+        MaxSdkCallbacks.Rewarded.OnAdReceivedRewardEvent -= OnRewardAdReceived;
     }
 
-    private void HandleAdDidPresentFullScreenContent(object sender, EventArgs args)
+
+    #region Inter Ads
+
+    [Button]
+    public void ShowInterstitial()
     {
-      Debug.Log("Displayed app open ad");
-      isShowingAd = true;
+        Debug.Log("ShowInter");
+        coutLoseGame++;
+        string adUnit = "";
+#if UNITY_IOS
+        adUnit = maxAdInterIOS;
+#elif UNITY_ANDROID || UNITY_EDITOR
+        adUnit = maxAdInterId;
+#endif
+        if (MaxSdk.IsInterstitialReady(adUnit))
+        {
+            if (coutLoseGame >= timesLoseGameToShowInterAds)
+            {
+                coutLoseGame = 0;
+                MaxSdk.ShowInterstitial(adUnit);
+            }
+        }
+        else
+        {
+            MaxSdk.LoadInterstitial(adUnit);
+        }
     }
 
-    private void HandleAdDidRecordImpression(object sender, EventArgs args)
+    #endregion
+
+    #region VIDEO ADS
+
+    private Action<bool> videoRewardCallback;
+
+    [Button]
+    public void ShowVideoReward()
     {
-      Debug.Log("Recorded ad impression");
+        ShowRewarded(result =>
+        {
+            if (result)
+            {
+                Debug.Log("Show success");
+            }
+            else
+            {
+                Debug.Log("Load video ads");
+            }
+        });
     }
 
-    private void HandlePaidEvent(object sender, AdValueEventArgs args)
+    public bool IsVideoRewardReady()
     {
-      Debug.LogFormat("Received paid event. (currency: {0}, value: {1}",
-        args.AdValue.CurrencyCode, args.AdValue.Value);
+        string adUnit = "";
+#if UNITY_IOS
+        adUnit = maxAdRewardIOS;
+#elif UNITY_ANDROID || UNITY_EDITOR
+        adUnit = maxAdRewardId;
+#endif
+        
+        if (MaxSdk.IsRewardedAdReady(adUnit))
+        {
+            return true;
+        }
+
+        MaxSdk.LoadRewardedAd(adUnit);
+        return false;
     }
 
-#endregion
-    
-		[Space]
-	[Space]
-		public bool showBanner;
-		public float delayADS;
-	[Space]
-	[Space]
-	public string redirectToScene;
+    public void ShowRewarded(Action<bool> callback = null)
+    {
+        Debug.Log("Reward");
 
-	private float gameTimer;
-	private string paramReward;
+        string adUnit = "";
+#if UNITY_IOS
+        adUnit = maxAdRewardIOS;
+#elif UNITY_ANDROID || UNITY_EDITOR
+        adUnit = maxAdRewardId;
+#endif
+        videoRewardCallback = callback;
+        if (MaxSdk.IsRewardedAdReady(adUnit))
+        {
+            MaxSdk.ShowRewardedAd(adUnit);
+        }
+        else
+        {
+            videoRewardCallback?.Invoke(false);
+            MaxSdk.LoadRewardedAd(adUnit);
+        }
+    }
 
-	private int loads;
-  [SerializeField] private LoadNextScene _loadNextScene;
+    private void OnRewardAdReceived(string arg1, MaxSdkBase.Reward arg2, MaxSdkBase.AdInfo arg3)
+    {
+        videoRewardCallback?.Invoke(true);
+        Invoke("IsVideoRewardReady",2);
+    }
 
-	void checkOtherADS(){
-		gameObject.name = "qwe";
+    #endregion
 
-		if (GameObject.Find("ADS")){
-			Destroy(gameObject);
-		}else{
-			gameObject.name = "ADS";
-		}
+    #region BANNER ADS
 
-	}
-
-  private void Awake()
-  {
-    DontDestroyOnLoad(this);
-  }
-
-  void Start () {
-
-		Debug.Log("alo");
-		checkOtherADS();
-		
-		DontDestroyOnLoad(this.gameObject);
-		
-		List<string> deviceIds = new List<string>();
-		deviceIds.Add("BC82D570192ECB14959E0F901038C49A");
-		RequestConfiguration requestConfiguration = new RequestConfiguration
-				.Builder()
-			.SetTestDeviceIds(deviceIds)
-			.build();
-		MobileAds.SetRequestConfiguration(requestConfiguration);
-		
-		MobileAds.Initialize(init =>
-		{
-			Debug.Log("Init ads Done");
-		});
-		
-		
-		this.rewardedAd = new RewardedAd(adUnitIdReward);
-		
-		// Called when an ad request has successfully loaded.
-		this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
-		// Called when an ad request failed to load.
-		this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
-		// Called when an ad is shown.
-		this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
-		// Called when an ad request failed to show.
-		this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
-		// Called when the user should be rewarded for interacting with the ad.
-		this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
-		// Called when the ad is closed.
-		this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-		
-		
-		
-		RequestInterstitial();
-		RequestRewardBasedVideo();
-	}
-
-  #region VideoReward
-
-  private void HandleRewardedAdClosed(object sender, EventArgs e)
-  {
-      Debug.Log("HandleRewardedAdClosed");
-      RewardCallback?.Invoke(true);
-      RewardCallback = null;
-      SceneMaster.Instance.HideLoading();
-      RequestRewardBasedVideo();
-      
-  }
-
-  private void HandleUserEarnedReward(object sender, Reward e)
-  {
-      Debug.Log("HandleUserEarnedReward");
-      rewardCallback?.Invoke(true);
-
-  }
-
-  private void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs e)
-  {
-      Debug.Log("HandleRewardedAdFailedToShow");
-      rewardCallback?.Invoke(false);
-
-  }
-
-  private void HandleRewardedAdOpening(object sender, EventArgs e)
-  {
-      Debug.Log("HandleRewardedAdOpening");
-  }
-
-  private void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
-  {
-      Debug.Log("HandleRewardedAdFailedToLoad");
-  }
-
-  private void HandleRewardedAdLoaded(object sender, EventArgs e)
-  {
-      Debug.Log("HandleRewardedAdLoaded");
-  }
-
-  private UnityAction<bool> rewardCallback;
-
-  public void ShowRewarded( UnityAction<bool> callback)
-  {
-      rewardCallback = callback;
-      if (rewardedAd.IsLoaded ()) {
-          rewardedAd.Show ();
-      }
-      else
-      {
-          RequestInterstitial();
-      }
-  }
-  
-  private void RequestRewardBasedVideo()
-  {
-      this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-      // Create an empty ad request.
-      AdRequest request = new AdRequest.Builder().Build();
-      // Load the rewarded ad with the request.
-      this.rewardedAd.LoadAd(request);
-  }
-
-  #endregion
-
-	void Update()
-	{
-		gameTimer += Time.deltaTime;
-		if (gameTimer > delayADS && loads == 0)
-		{
-			loads = 1;
-			if (showBanner == true)
-			{
-				if (PlayerPrefs.GetInt("noads") != 1)
-				{
-					this.RequestBanner();
-					bannerView.Show();
-				}
-			}
-		}
-
-	}
+    [Button]
+    public void ShowBanner()
+    {
+        string adUnit = "";
+#if UNITY_IOS
+        adUnit = maxAdBannerIOS;
+#elif UNITY_ANDROID || UNITY_EDITOR
+        adUnit = maxAdBannerId;
+#endif
+        
+        MaxSdk.CreateBanner(adUnit, MaxSdkBase.BannerPosition.BottomCenter);
+        MaxSdk.ShowBanner(adUnit);
+    }
 
 
-  
-  public float InterstitialTime { get; set; } = 0;
-  public int InterstitialIntervalTime { get; set; } = 35;	
-  UnityAction<bool> RewardCallback;
+    IEnumerator AutoShowBanner()
+    {
+        yield return new WaitForSecondsRealtime(threshold);
+        if (isShowBanner)
+        {
+            ShowBanner();
+        }
+    }
 
-  
-
-	public void ShowBanner()
-	{
-		if (showBanner == true)
-		{
-			if (PlayerPrefs.GetInt("noads") != 1)
-			{
-				gameTimer = 0;
-				loads = 0;
-			}
-		}
-	}
-
-	void HideBanner()
-	{
-		if (PlayerPrefs.GetInt("noads") != 1){
-			bannerView.Hide();
-			RequestBanner();
-		}
-	}
-
-	private void RequestBanner()
-	{
-		this.bannerView = new BannerView(adUnitIdBanner, AdSize.Banner, AdPosition.Bottom);
-		AdRequest request = new AdRequest.Builder().Build();
-		bannerView.LoadAd(request);
-		bannerView.Hide();
-
-	}
-
-  #region Inter
-
-  private UnityAction<bool> interActionCallBack;
-  public void ShowInterstitial( UnityAction<bool> actionCallback = null)
-  {
-      interActionCallBack = actionCallback;
-      if (PlayerPrefs.GetInt("noads") != 1)
-      {
-          if (this.interstitial.IsLoaded())
-          {
-              Debug.Log("Show");
-              //SceneMaster.Instance.ShowLoading(1);
-              gameTimer = 0;
-              this.interstitial.Show();
-              RequestInterstitial();
-          }
-      }
-
-
-  }
-
-  private void RequestInterstitial()
-  {
-		
-      // Initialize an InterstitialAd.
-      this.interstitial = new InterstitialAd(adUnitIdInter);
-
-      // Called when an ad request has successfully loaded.
-      this.interstitial.OnAdLoaded += HandleOnAdLoaded;
-      // Called when an ad request failed to load.
-      this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
-      // Called when an ad is shown.
-      this.interstitial.OnAdOpening += HandleOnAdOpening;
-      // Called when the ad is closed.
-      this.interstitial.OnAdClosed += HandleOnAdClosed;
-    
-      // Create an empty ad request.
-      AdRequest request = new AdRequest.Builder().Build();
-      // Load the interstitial with the request.
-      this.interstitial.LoadAd(request);
-
-  }
-	
-  private void HandleOnAdLoaded(object sender, EventArgs args)
-  {
-      MonoBehaviour.print("HandleAdLoaded event received");
-  }
-
-  private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
-  {
-      MonoBehaviour.print("HandleFailedToReceiveAd event received with message: "
-                          + args);
-      if (showBanner == true)
-      {
-          if (PlayerPrefs.GetInt("noads") != 1)
-          {
-              this.RequestBanner();
-              bannerView.Show();
-          }
-      }
-      _loadNextScene?.SendMessage("LoadNext");
-      interActionCallBack?.Invoke(false);
-
-  }
-
-  private void HandleOnAdOpening(object sender, EventArgs args)
-  {
-      MonoBehaviour.print("HandleAdOpening event received");
-  }
-
-  private void HandleOnAdClosed(object sender, EventArgs args)
-  {
-      MonoBehaviour.print("HandleAdClosed event received");
-      interActionCallBack?.Invoke(true);
-      _loadNextScene?.SendMessage("LoadNext");
-  }
-  
-
-  #endregion
-	
-
-
+    #endregion
 }
