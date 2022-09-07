@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WeightGate : MonoBehaviour
 {
     [SerializeField] string calculation;
-	[SerializeField] TextMesh calculationTextMesh;
+	[SerializeField] TextMeshProUGUI calculationTextMesh;
 	[SerializeField] GameObject red;
 	[SerializeField] GameObject blue;
 

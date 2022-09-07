@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 	public float Weight { get; private set; } = baseWeight;
 	public float Tall { get; private set; } = baseTall;
 	public float Power => (Weight + Tall) / 2f;
-	public bool Dead => Weight <= 0 || Tall <= 0.1f;
+	public bool Dead => Weight <= 0 && Tall <= 0.1f;
 
 	private void Awake()
 	{

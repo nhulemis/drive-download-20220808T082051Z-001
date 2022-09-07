@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5428532573828746133}
   - {fileID: 3190074513344599103}
@@ -90,6 +91,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -162,6 +164,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5204284259637215336}
   - {fileID: 5204284258972080492}
@@ -252,6 +255,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5204284259637215336}
     m_Modifications:
+    - target: {fileID: 418635379315568891, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: m_text
+      value: +75
+      objectReference: {fileID: 0}
+    - target: {fileID: 418635379315568891, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: m_fontSize
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3099220053994548321, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -300,13 +311,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: TallGate (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3596313924414831540, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: calculation
+      value: +75
+      objectReference: {fileID: 0}
     - target: {fileID: 4462218110060653944, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: calculation
       value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 4994482348505360306, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6081678910142197023, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: m_Text
@@ -314,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613303342600473350, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
@@ -602,6 +617,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5204284259637215336}
     m_Modifications:
+    - target: {fileID: 418635379315568891, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: m_text
+      value: +75
+      objectReference: {fileID: 0}
+    - target: {fileID: 418635379315568891, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: m_fontSize
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3099220053994548321, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -649,6 +672,10 @@ PrefabInstance:
     - target: {fileID: 3099220053994548326, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: m_Name
       value: TallGate (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596313924414831540, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: calculation
+      value: +75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
@@ -1112,7 +1139,19 @@ PrefabInstance:
       propertyPath: m_Text
       value: +75
       objectReference: {fileID: 0}
+    - target: {fileID: 5481042278131559138, guid: efef5965eaac5f948a434be0b198b016, type: 3}
+      propertyPath: m_text
+      value: +75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481042278131559138, guid: efef5965eaac5f948a434be0b198b016, type: 3}
+      propertyPath: m_fontSize
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 8373075696915117921, guid: efef5965eaac5f948a434be0b198b016, type: 3}
+      propertyPath: calculation
+      value: +75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8662520177606746541, guid: efef5965eaac5f948a434be0b198b016, type: 3}
       propertyPath: calculation
       value: +75
       objectReference: {fileID: 0}
@@ -1192,6 +1231,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5204284259637215336}
     m_Modifications:
+    - target: {fileID: 418635379315568891, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: m_text
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 418635379315568891, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: m_fontSize
+      value: 0.55
+      objectReference: {fileID: 0}
     - target: {fileID: 3099220053994548321, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1240,13 +1287,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TallGate
       objectReference: {fileID: 0}
+    - target: {fileID: 3596313924414831540, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: calculation
+      value: -100
+      objectReference: {fileID: 0}
     - target: {fileID: 4462218110060653944, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: calculation
       value: +100
       objectReference: {fileID: 0}
+    - target: {fileID: 4994482348505360306, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6081678910142197023, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
       propertyPath: m_Text
       value: +100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613303342600473350, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e80b2bf231fbf349aeb0571ff7b1b30, type: 3}
