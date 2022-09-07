@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 public class ads_go : MonoBehaviour
@@ -185,4 +186,14 @@ public class ads_go : MonoBehaviour
     }
 
     #endregion
+
+#if UNITY_EDITOR
+    [Button]
+    public void SetupPass(string pass = "K01202757498")
+    {
+        PlayerSettings.keystorePass = pass;
+        PlayerSettings.keyaliasPass = pass;
+        Debug.Log("Setup pass done");
+    }
+#endif
 }
