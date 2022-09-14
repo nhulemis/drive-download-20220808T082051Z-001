@@ -21,6 +21,8 @@ public class ResultScene : Scene
 	[SerializeField] Image fillSkin;
 
 	const int X_GEM = 5;
+  
+  
 	private void OnEnable()
 	{
 		EventManager.Instance.AddListener(GameEvent.OnCoinChange, OnCoinChange);

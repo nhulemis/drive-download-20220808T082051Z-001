@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2153608094102269926, guid: 9a41a812a97564c42b006321915ebe93, type: 3}
       propertyPath: m_SortingOrder
-      value: 999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2227050623642633868, guid: 9a41a812a97564c42b006321915ebe93, type: 3}
       propertyPath: m_text
@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2291934573457462454, guid: 9a41a812a97564c42b006321915ebe93, type: 3}
       propertyPath: m_SortingOrder
-      value: 999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3226016023295128848, guid: 9a41a812a97564c42b006321915ebe93, type: 3}
       propertyPath: m_text
@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709106113501806100, guid: 9a41a812a97564c42b006321915ebe93, type: 3}
       propertyPath: m_SortingOrder
-      value: 999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6045762774262432803, guid: 9a41a812a97564c42b006321915ebe93, type: 3}
       propertyPath: m_Name
@@ -118,6 +118,7 @@ MonoBehaviour:
   calculationTextMesh: {fileID: 418635379315568891}
   red: {fileID: 6613303342600473350}
   blue: {fileID: 4994482348505360306}
+  childs: []
 --- !u!1 &4994482348505360306 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4443801837236326391, guid: 9a41a812a97564c42b006321915ebe93, type: 3}

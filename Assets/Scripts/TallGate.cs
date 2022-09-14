@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TallGate : MonoBehaviour
 {
@@ -9,6 +11,18 @@ public class TallGate : MonoBehaviour
     [SerializeField] TextMeshProUGUI calculationTextMesh;
     [SerializeField] GameObject red;
     [SerializeField] GameObject blue;
+
+    [SerializeField] private Canvas[] childs;
+
+    private void Start()
+    {
+       childs = GetComponentsInChildren<Canvas>();
+
+       foreach (var child in childs)
+       {
+           child.worldCamera = Camera.main;
+       }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

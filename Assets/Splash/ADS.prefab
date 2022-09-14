@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8001380665172809282}
   - component: {fileID: 8001380665172809281}
+  - component: {fileID: 8870254419282934293}
+  - component: {fileID: 1560784059434665610}
   m_Layer: 0
   m_Name: ADS
   m_TagString: Untagged
@@ -44,11 +46,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269c72ebfbdb4394e8c90f23e123ac2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adUnitIdBanner: ca-app-pub-6243216273007084/4986934264
-  adUnitIdInter: ca-app-pub-6143123562350217/6681054617
-  adUnitIdReward: ca-app-pub-6143123562350217/3522207101
-  adUnitOpenApp: ca-app-pub-6143123562350217/4835288774
-  showBanner: 0
-  delayADS: 3
-  redirectToScene: 
-  _loadNextScene: {fileID: 0}
+  maxSDKKey: DpnBL7fWuMl3Nosbg-cTaQH2dulNafTa_pg7xL4tz7z6DnC1RgfhWQFATzZ-AOqRfTEqvNemGvfH_SoiTHQaal
+  timesLoseGameToShowInterAds: 2
+  maxAdInterId: f72bb84db2d5283d
+  maxAdInterIOS: 91dbea6644760da9
+  isShowBanner: 1
+  threshold: 4
+  maxAdBannerId: da64cf2013a21619
+  maxAdBannerIOS: 0a692aa5cb5aa5df
+  maxAdRewardId: 4a5437084483d873
+  maxAdRewardIOS: 17dfb961a8d14eec
+--- !u!114 &8870254419282934293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8001380665172809280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b2f34c59c6d478aa3b7ab420e429b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsInitialized: 0
+--- !u!114 &1560784059434665610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8001380665172809280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6917b761164dda9a868bef1a123500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

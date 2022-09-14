@@ -51,7 +51,7 @@ public class CollectAnimation : MonoBehaviour
 
     const float EXPLODE_TIME = 0.6f;
 
-	public void Collect(System.Action onComplete, System.Action<float> onStep, float moveSpeed = 10f)
+	public void Collect(System.Action onComplete, System.Action<float> onStep, float moveSpeed = 3000f)
 	{
 		var distance = Vector3.Distance(transform.position, target.position);
 		for(int i = 0; i < icons.Length; i++)

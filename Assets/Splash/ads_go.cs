@@ -11,6 +11,8 @@ public class ads_go : MonoBehaviour
     [ReadOnly]
     public string maxSDKKey = "DpnBL7fWuMl3Nosbg-cTaQH2dulNafTa_pg7xL4tz7z6DnC1RgfhWQFATzZ-AOqRfTEqvNemGvfH_SoiTHQaal";
     [Space] private int coutLoseGame = 0;
+    public bool isShowAds { get; set; }
+
 
     public int timesLoseGameToShowInterAds = 5;
     public string maxAdInterId = "77fecb0549079116";
@@ -45,15 +47,11 @@ public class ads_go : MonoBehaviour
         MaxSdk.SetSdkKey(maxSDKKey);
         MaxSdk.InitializeSdk();
 
+        coutLoseGame = PlayerPrefs.GetInt("COUNT_TO_SHOW_INTER", 0);
+        
         StartCoroutine(AutoShowBanner());
 
         MaxSdkCallbacks.Rewarded.OnAdReceivedRewardEvent += OnRewardAdReceived;
-        MaxSdkCallbacks.OnSdkInitializedEvent += OnAdInitSuccess;
-    }
-
-    private void OnAdInitSuccess(MaxSdkBase.SdkConfiguration obj)
-    {
-        IsVideoRewardReady();
     }
 
     private void OnDestroy()
@@ -67,7 +65,11 @@ public class ads_go : MonoBehaviour
     [Button]
     public void ShowInterstitial()
     {
-        Debug.Log("ShowInter");
+        if (!isShowAds)
+        {
+            return;
+        }
+        coutLoseGame = PlayerPrefs.GetInt("COUNT_TO_SHOW_INTER", 0);
         coutLoseGame++;
         string adUnit = "";
 #if UNITY_IOS
@@ -87,6 +89,8 @@ public class ads_go : MonoBehaviour
         {
             MaxSdk.LoadInterstitial(adUnit);
         }
+        
+        PlayerPrefs.SetInt("COUNT_TO_SHOW_INTER",coutLoseGame);
     }
 
     #endregion
@@ -98,6 +102,7 @@ public class ads_go : MonoBehaviour
     [Button]
     public void ShowVideoReward()
     {
+        
         ShowRewarded(result =>
         {
             if (result)
@@ -113,6 +118,11 @@ public class ads_go : MonoBehaviour
 
     public bool IsVideoRewardReady()
     {
+        if (!isShowAds)
+        {
+            return false;
+        }
+        
         string adUnit = "";
 #if UNITY_IOS
         adUnit = maxAdRewardIOS;
@@ -131,8 +141,6 @@ public class ads_go : MonoBehaviour
 
     public void ShowRewarded(Action<bool> callback = null)
     {
-        Debug.Log("Reward");
-
         string adUnit = "";
 #if UNITY_IOS
         adUnit = maxAdRewardIOS;
@@ -154,7 +162,6 @@ public class ads_go : MonoBehaviour
     private void OnRewardAdReceived(string arg1, MaxSdkBase.Reward arg2, MaxSdkBase.AdInfo arg3)
     {
         videoRewardCallback?.Invoke(true);
-        Invoke("IsVideoRewardReady",2);
     }
 
     #endregion
@@ -178,8 +185,10 @@ public class ads_go : MonoBehaviour
 
     IEnumerator AutoShowBanner()
     {
+        var remote = GetComponent<RemoteConfig>();
+        yield return new WaitUntil(() => remote.IsInitialized);
         yield return new WaitForSecondsRealtime(threshold);
-        if (isShowBanner)
+        if (isShowAds)
         {
             ShowBanner();
         }

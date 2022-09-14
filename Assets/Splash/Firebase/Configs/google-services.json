@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "936052923515",
+    "project_id": "tallrun-c61ea",
+    "storage_bucket": "tallrun-c61ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936052923515:android:abef4df83f6980ac2c96de",
+        "android_client_info": {
+          "package_name": "com.KaremEldsoky.tallman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936052923515-5mhospbq7obm9rkqhhn9uk4q7v8j048j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ3JukK5KHX4oDLAQmgnexC7_W-nYPacc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936052923515-5mhospbq7obm9rkqhhn9uk4q7v8j048j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

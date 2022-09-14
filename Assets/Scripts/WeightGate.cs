@@ -10,6 +10,19 @@ public class WeightGate : MonoBehaviour
 	[SerializeField] GameObject red;
 	[SerializeField] GameObject blue;
 
+  
+  [SerializeField] private Canvas[] childs;
+
+  private void Start()
+  {
+      childs = GetComponentsInChildren<Canvas>();
+
+      foreach (var child in childs)
+      {
+          child.worldCamera = Camera.main;
+      }
+  }
+  
 	private void OnTriggerEnter(Collider other)
 	{
 		if(!other.tag.Equals(GameConst.Data.playertag))
