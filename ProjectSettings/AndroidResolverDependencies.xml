@@ -2,8 +2,17 @@
   <packages>
     <package>androidx.lifecycle:lifecycle-common-java8:2.4.1</package>
     <package>androidx.lifecycle:lifecycle-process:2.4.1</package>
+    <package>com.android.support:appcompat-v7:25.3.1</package>
+    <package>com.android.support:cardview-v7:25.3.1</package>
+    <package>com.android.support:customtabs:25.3.1</package>
+    <package>com.android.support:support-v4:25.3.1</package>
     <package>com.applovin.mediation:google-adapter:[21.1.0.2]</package>
     <package>com.applovin:applovin-sdk:11.4.4</package>
+    <package>com.facebook.android:facebook-applinks:[14.1, 15)</package>
+    <package>com.facebook.android:facebook-core:[14.1, 15)</package>
+    <package>com.facebook.android:facebook-gamingservices:[14.1, 15)</package>
+    <package>com.facebook.android:facebook-login:[14.1, 15)</package>
+    <package>com.facebook.android:facebook-share:[14.1, 15)</package>
     <package>com.google.android.gms:play-services-ads:21.0.0</package>
     <package>com.google.android.gms:play-services-base:18.1.0</package>
     <package>com.google.firebase:firebase-analytics:21.1.1</package>
@@ -17,6 +26,7 @@
     <package>com.google.firebase:firebase-iid:21.1.0</package>
     <package>com.google.firebase:firebase-messaging:23.0.8</package>
     <package>com.google.firebase:firebase-messaging-unity:9.5.0</package>
+    <package>com.parse.bolts:bolts-android:1.4.0</package>
   </packages>
   <files>
     <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/9.5.0/firebase-analytics-unity-9.5.0.aar</file>
